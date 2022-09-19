@@ -1,6 +1,6 @@
 
 
-name: cd
+name: ci nad cd
 
 on:
   push:
