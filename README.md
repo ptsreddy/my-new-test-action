@@ -1,5 +1,5 @@
 # q-aws-kubernetes-github-actions
-# new update
+
 Creation of a **website**, hosted on a **Kubernetes cluster**. Use **Kubectl**, **Kustomize** and **Github actions** to deploy it in a **GitOps** way. 
 
 - `master` branch : original version using **eksctl**.
