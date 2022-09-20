@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: website
-  namespace: kubernetes-github-actions
+  namespace: test-ecr-repo
   labels:
     app: website
 spec:
@@ -20,5 +20,5 @@ spec:
       - name: website
         image: amazonaws.com/kubernetes-github-actions
         ports:
-        - containerPort: 3000
+        - containerPort: 8080
           name: website
