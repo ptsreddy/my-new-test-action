@@ -20,5 +20,5 @@ spec:
       - name: website
         image: amazonaws.com/test-ecr-repo
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
           name: website
