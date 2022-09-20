@@ -69,9 +69,13 @@ jobs:
           --progress-bar \
           --location \
           --remote-name
-        chmod +x kubectl
+        echo "successfull"
+        sudo chmod +x kubectl
+        echo "chmod successfull"
         sudo mv kubectl /usr/local/bin/
+        echo "kubectl successfull"
         echo ${{ secrets.KUBECONFIG }} > kubeconfig.yaml
+        echo "kubeconfig.yaml successfull"
     - name: Deploy
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
