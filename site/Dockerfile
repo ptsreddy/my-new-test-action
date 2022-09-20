@@ -12,5 +12,5 @@ ENV NODE_ENV production
 WORKDIR /app
 COPY --from=build /app .
 ADD . .
-EXPOSE 3000
+EXPOSE 8080
 CMD ["node", "server.js"]
