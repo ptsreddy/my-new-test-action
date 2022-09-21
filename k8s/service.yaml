@@ -11,7 +11,6 @@ spec:
     selector:
         app: website
     ports:
-#     - nodeport: 31479
      - port: 80
        protocol: TCP  
        targetPort: 3000
