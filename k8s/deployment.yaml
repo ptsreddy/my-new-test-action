@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: website
-        image: amazonaws.com/test-ecr-repo
+        image: 367941558016.dkr.ecr.us-east-1.amazonaws.com/test-ecr-repo:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 80
           name: website
