@@ -13,7 +13,7 @@ on:
 env: 
   AWS_REGION: us-east-1
   ECR_REPOSITORY: test-ecr-repo
-#  SHORT_SHA: $(echo ${{ github.sha }} | cut -c 1-8)
+  SHORT_SHA: $(echo ${{ github.sha }} | cut -c 1-8)
 #   EKS_CLUSTER_NAME: dev_cluster
 
 jobs:
