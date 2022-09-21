@@ -6,7 +6,7 @@ const app = express()
 nunjucks.configure('views', {
     express: app,
     autoescape: false,
-    noCache: true
+    noCache: true,
 })
 
 app.set('view engine', 'njk')
