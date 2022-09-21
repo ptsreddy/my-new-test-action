@@ -13,7 +13,7 @@ on:
 env: 
   AWS_REGION: us-east-1
   ECR_REPOSITORY: test-ecr-repo
-  SHORT_SHA: $(echo ${{ github.sha }} | cut -c 1-8)
+  NOW: $(date +'%Y-%m-%dT%H:%M:%S')
 #   EKS_CLUSTER_NAME: dev_cluster
 
 jobs:
@@ -57,10 +57,10 @@ jobs:
         cd site
         docker image build \
         --tag ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest \
-        --tag ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.SHORT_SHA }} \
+        --tag ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.NOW }} \
         .
         docker push ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest
-        docker push ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.SHORT_SHA }}
+        docker push ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.NOW }}
     - name: Install and configure kubectl
       run: |
         VERSION=$(curl --silent https://storage.googleapis.com/kubernetes-release/release/stable.txt)
@@ -83,7 +83,7 @@ jobs:
 #         cluster_name: $EKS_CLUSTER_NAME
       run: |
         export ECR_REPOSITORY=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}
-        export IMAGE_TAG=${{ env.SHORT_SHA }}
+        export IMAGE_TAG=${{ env.NOW }}
         export KUBECONFIG=kubeconfig.yaml
         envsubst < k8s/kustomization.tmpl.yaml > k8s/kustomization.yaml
         kubectl kustomize k8s | kubectl apply -f -
