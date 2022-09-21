@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
     name: website
-    namespace: test-ecr-repo
+    namespace: backend-service
     labels:
         app: website
 spec:
@@ -11,6 +11,7 @@ spec:
     selector:
         app: website
     ports:
-    - port: 80
+    - nodeport: 31479
+      port: 80
       protocol: TCP  
       targetPort: 3000
